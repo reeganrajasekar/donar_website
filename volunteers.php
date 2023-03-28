@@ -36,20 +36,19 @@
 
       <div class="collapse navbar-collapse" id="ftco-nav">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
+          <li class="nav-item "><a href="/" class="nav-link">Home</a></li>
           <li class="nav-item"><a href="/donar" class="nav-link">Donar</a></li>
           <li class="nav-item"><a href="/user" class="nav-link">People-in-Need</a></li>
           <li class="nav-item"><a href="/member" class="nav-link">Member</a></li>
           <li class="nav-item"><a href="/staff" class="nav-link">Staff</a></li>
           <li class="nav-item"><a href="/admin" class="nav-link">Admin</a></li>
           <li class="nav-item"><a href="/admin" class="nav-link">Admin</a></li>
-          <li class="nav-item"><a href="#volunteer" class="nav-link">Volunteers Section</a></li>
+          <li class="nav-item active"><a href="#volunteer" class="nav-link">Volunteers Section</a></li>
         </ul>
       </div>
     </div>
   </nav>
   <!-- END nav -->
-  
   <div class="block-31" style="position: relative;">
     <div class="owl-carousel loop-block-31 ">
       <div class="block-30 block-30-sm item" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
@@ -64,113 +63,8 @@
       
     </div>
   </div>
-  
 
-  <div class="site-section border-top">
-    <div class="container">
-      <div class="row">
-
-        <div class="col-md-4">
-          <div class="media block-6">
-            <div class="icon"><span class="ion-ios-bulb"></span></div>
-            <div class="media-body">
-              <h3 class="heading">Our Mission</h3>
-              <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-              <p><a href="#" class="link-underline">Learn More</a></p>
-            </div>
-          </div>     
-        </div>
-
-        <div class="col-md-4">
-          <div class="media block-6">
-            <div class="icon"><span class="ion-ios-cash"></span></div>
-            <div class="media-body">
-              <h3 class="heading">Make Donations</h3>
-              <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-              <p><a href="#" class="link-underline">Learn More</a></p>
-            </div>
-          </div>  
-        </div>
-
-        <div class="col-md-4">
-          <div class="media block-6">
-            <div class="icon"><span class="ion-ios-contacts"></span></div>
-            <div class="media-body">
-              <h3 class="heading">We Need Volunteers</h3>
-              <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-              <p><a href="#" class="link-underline">Learn More</a></p>
-            </div>
-          </div> 
-        </div>
-
-      </div>
-    </div>
-  </div> <!-- .site-section -->
-
-
-
-  
-
-  
-
-
-  <div class="site-section fund-raisers">
-    <div class="container">
-      <div class="row mb-3 justify-content-center">
-        <div class="col-md-8 text-center">
-          <h2>Latest Donations</h2>
-        </div>
-      </div>
-
-      <div class="row">
-        <?php 
-        $result = $conn->query("SELECT * FROM donation ORDER BY id desc LIMIT 3");
-        while($row=$result->fetch_assoc()){
-          $donarid=$row["donarid"];
-          $result1 = $conn->query("SELECT * FROM donar WHERE id='$donarid'");
-          while($row1=$result1->fetch_assoc()){
-        ?>
-        <div class="col-md-6 col-lg-3 mb-5">
-          <div class="person-donate text-center">
-            <div class="donate-info">
-              <h2><?php echo($row1["name"]) ?></h2>
-              <span class="time d-block mb-3">Donated <?php echo($row["reg_date"]) ?></span>
-              <p>Donated <span class="text-success"><?php echo($row["amount"]) ?></span></p>
-            </div>
-          </div>    
-        </div>
-        <?php 
-          }}
-        ?>
-
-      </div>
-    </div>
-  </div> <!-- .section -->
-
-  <div class="featured-section overlay-color-2" style="background-image: url('images/bg_3.jpg');">
-    
-    <div class="container">
-      <div class="row">
-
-        <div class="col-md-6">
-          <img src="images/bg_3.jpg" alt="Image placeholder" class="img-fluid">
-        </div>
-
-        <div class="col-md-6 pl-md-5">
-          <span class="featured-text d-block mb-3">Success Stories</span>
-          <h2>Water Is Life. We Successfuly Provide Clean Water in South East Asia</h2>
-          <p class="mb-3">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-          <span class="fund-raised d-block mb-5">We have raised $100,000</span>
-
-          <p><a href="#" class="btn btn-success btn-hover-white py-3 px-5">Read The Full Story</a></p>
-        </div>
-        
-      </div>
-    </div>
-
-  </div> 
-
-  <div class="site-section fund-raisers">
+  <div class="site-section fund-raisers" id="volunteers">
     <div class="container">
       <div class="row mb-3 justify-content-center">
         <div class="col-md-8 text-center">
@@ -178,17 +72,18 @@
         </div>
       </div>
 
-      <div class="form-volunteer bg-primary p-4">
-        <form action="/volunteers.php#volunteers" method="post">
-          <div class="form-group">
-            <label for="email">Mobile No</label>
-            <input type="number" name="mobile" class="form-control py-2" id="email" placeholder="Enter your Mobile No">
-          </div>
-          <div class="form-group">
-            <input type="submit" class="btn btn-white px-5 py-2" value="Find">
-          </div>
-        </form>
-      </div>  
+      <?php
+      $mobile=$_POST["mobile"];
+      $result = $conn->query("SELECT * FROM vol WHERE mobile='$mobile'");
+      while ($row=$result->fetch_assoc()) {
+        ?>
+        <p style="font-size:2rem;font-weight:600">Name : <span style="color:#f7ca44"><?php echo($row["name"])?></span></p>
+        <p style="font-size:1.5rem;font-weight:600">Mobile : <span style="color:#f7ca44"><?php echo($row["mobile"])?></span></p>
+        <p style="font-size:1.5rem;font-weight:600">Email : <span style="color:#f7ca44"><?php echo($row["email"])?></span></p>
+        <p style="font-size:2rem;font-weight:600">Hours Collected : <span style="color:#f7ca44"><?php echo($row["hour"])?> hours</span></p>
+        <?php
+      } 
+      ?>
     </div>
   </div>
 
