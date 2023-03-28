@@ -77,6 +77,57 @@
                     </div>
                 </div>
             </div>
+            <div class="col-lg-6 col-xl-6 col-sm-12 col-md-12">
+                <div class="stretch-card grid-margin">
+                    <div class="card bg-gradient-secondary card-img-holder text-white">
+                        <div class="card-body">
+                            <img src="/assets/images/circle.svg" class="card-img-absolute" alt="circle-image" />
+                            <h4 class="font-weight-normal mb-3">Total Donars</i>
+                            </h4>
+                            <h2 class="mb-5">
+                                <?php 
+                                $result = $conn->query("SELECT * FROM donar");
+                                echo($result->num_rows)
+                                ?>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-xl-6 col-sm-12 col-md-12">
+                <div class="stretch-card grid-margin">
+                    <div class="card bg-gradient-danger card-img-holder text-white">
+                        <div class="card-body">
+                            <img src="/assets/images/circle.svg" class="card-img-absolute" alt="circle-image" />
+                            <h4 class="font-weight-normal mb-3">Total People-in-Need</i>
+                            </h4>
+                            <h2 class="mb-5">
+                                <?php 
+                                $result = $conn->query("SELECT * FROM user");
+                                echo($result->num_rows)
+                                ?>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-xl-6 col-sm-12 col-md-12">
+                <div class="stretch-card grid-margin">
+                    <div class="card bg-gradient-warning card-img-holder text-white">
+                        <div class="card-body">
+                            <img src="/assets/images/circle.svg" class="card-img-absolute" alt="circle-image" />
+                            <h4 class="font-weight-normal mb-3">Total Volunteer</i>
+                            </h4>
+                            <h2 class="mb-5">
+                                <?php 
+                                $result = $conn->query("SELECT * FROM vol");
+                                echo($result->num_rows)
+                                ?>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
