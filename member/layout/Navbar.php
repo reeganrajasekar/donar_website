@@ -32,6 +32,13 @@
           <i class="mdi mdi-note menu-icon"></i>
         </a>
       </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/member/password.php">
+          <span class="menu-title">Change Password</span>
+          <i class="mdi mdi-lock menu-icon"></i>
+        </a>
+      </li>
       
     </ul>
   </nav>
