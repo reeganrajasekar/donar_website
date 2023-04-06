@@ -42,7 +42,6 @@
           <li class="nav-item"><a href="/member" class="nav-link">Member</a></li>
           <li class="nav-item"><a href="/staff" class="nav-link">Staff</a></li>
           <li class="nav-item"><a href="/admin" class="nav-link">Admin</a></li>
-          <li class="nav-item"><a href="/admin" class="nav-link">Admin</a></li>
           <li class="nav-item"><a href="#volunteer" class="nav-link">Volunteers Section</a></li>
         </ul>
       </div>
@@ -170,7 +169,7 @@
 
   </div> 
 
-  <div class="site-section fund-raisers">
+  <div class="site-section fund-raisers" id="volunteer">
     <div class="container">
       <div class="row mb-3 justify-content-center">
         <div class="col-md-8 text-center">

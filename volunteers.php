@@ -42,7 +42,6 @@
           <li class="nav-item"><a href="/member" class="nav-link">Member</a></li>
           <li class="nav-item"><a href="/staff" class="nav-link">Staff</a></li>
           <li class="nav-item"><a href="/admin" class="nav-link">Admin</a></li>
-          <li class="nav-item"><a href="/admin" class="nav-link">Admin</a></li>
           <li class="nav-item active"><a href="#volunteer" class="nav-link">Volunteers Section</a></li>
         </ul>
       </div>
@@ -75,15 +74,19 @@
       <?php
       $mobile=$_POST["mobile"];
       $result = $conn->query("SELECT * FROM vol WHERE mobile='$mobile'");
+      if($result->num_rows>0){
       while ($row=$result->fetch_assoc()) {
         ?>
-        <p style="font-size:2rem;font-weight:600">Name : <span style="color:#f7ca44"><?php echo($row["name"])?></span></p>
-        <p style="font-size:1.5rem;font-weight:600">Mobile : <span style="color:#f7ca44"><?php echo($row["mobile"])?></span></p>
-        <p style="font-size:1.5rem;font-weight:600">Email : <span style="color:#f7ca44"><?php echo($row["email"])?></span></p>
-        <p style="font-size:2rem;font-weight:600">Hours Collected : <span style="color:#f7ca44"><?php echo($row["hour"])?> hours</span></p>
+        <p style="font-size:1.2rem;font-weight:600">Name : <span style="color:#f7ca44"><?php echo($row["name"])?></span></p>
+        <p style="font-size:1rem;font-weight:600">Mobile : <span style="color:#f7ca44"><?php echo($row["mobile"])?></span></p>
+        <p style="font-size:1rem;font-weight:600">Email : <span style="color:#f7ca44"><?php echo($row["email"])?></span></p>
+        <p style="font-size:1.2rem;font-weight:600">Hours Collected : <span style="color:#f7ca44"><?php echo($row["hour"])?> hours</span></p>
         <?php
-      } 
+      }}else{
       ?>
+        <p style="font-size:1rem;font-weight:600">Volunteer Details Not Found!</p>
+    
+      <?php } ?>
     </div>
   </div>
 
